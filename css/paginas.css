@@ -1,0 +1,396 @@
+/* =========================================================
+   PAGINAS.CSS — Versão compacta (tudo visível sem scroll)
+   ========================================================= */
+
+.screen{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2vh 2vw;
+}
+
+/* ---------- CAIXA PRINCIPAL ---------- */
+.subpage-content{
+  position:relative;
+  z-index:10;
+  width:min(820px,94vw);
+  max-height:96vh;
+  overflow-y:auto;
+  padding:clamp(18px,2.5vh,26px) clamp(18px,2.5vw,32px);
+  background:rgba(3,10,20,.9);
+  border:2px solid #51d8ff;
+  border-radius:0;
+  backdrop-filter:blur(12px);
+  box-shadow:
+    6px 6px 0 rgba(0,0,0,.7),
+    0 0 40px rgba(81,216,255,.15),
+    inset 0 0 0 1px rgba(81,216,255,.1);
+  scrollbar-width:thin;
+  scrollbar-color:#51d8ff rgba(3,10,20,.8);
+}
+.subpage-content::-webkit-scrollbar{ width:6px; }
+.subpage-content::-webkit-scrollbar-track{
+  background:rgba(3,10,20,.8);
+}
+.subpage-content::-webkit-scrollbar-thumb{
+  background:#51d8ff;
+}
+
+.subpage-content::before,
+.subpage-content::after{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:#f9d616;
+}
+.subpage-content::before{ top:-2px; left:-2px; }
+.subpage-content::after{ bottom:-2px; right:-2px; }
+
+/* ---------- TÍTULO ---------- */
+.subpage-content h2{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(.8rem,1.6vw,1.2rem);
+  letter-spacing:clamp(.05em,.18vw,.1em);
+  text-transform:uppercase;
+  color:#f9d616;
+  margin-bottom:clamp(12px,1.8vh,18px);
+  padding-bottom:clamp(8px,1.2vh,12px);
+  border-bottom:2px solid rgba(81,216,255,.25);
+  text-shadow:
+    2px 2px 0 #d71920,
+    4px 4px 0 #050505,
+    0 0 14px rgba(249,214,22,.5);
+  line-height:1.2;
+  text-align:center;
+}
+
+.subpage-content h3{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(.6rem,1vw,.8rem);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#51d8ff;
+  margin:clamp(12px,2vh,18px) 0 clamp(8px,1.2vh,12px);
+  text-shadow:
+    1px 1px 0 #050505,
+    0 0 10px rgba(81,216,255,.4);
+  line-height:1.3;
+}
+
+.subpage-content p,
+.subpage-content li,
+.subpage-content label{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(7px,.7vw,9px);
+  color:#c9e2f0;
+  line-height:1.7;
+  letter-spacing:.04em;
+  margin-bottom:clamp(4px,.8vh,8px);
+  text-shadow:1px 1px 0 rgba(0,0,0,.6);
+}
+.subpage-content p strong,
+.subpage-content li strong,
+.subpage-content label strong{
+  color:#f9d616;
+  font-weight:400;
+}
+.subpage-content ul{
+  list-style:none;
+  padding-left:0;
+  margin-bottom:clamp(8px,1.2vh,12px);
+}
+.subpage-content li{
+  padding-left:20px;
+  position:relative;
+}
+.subpage-content li::before{
+  content:"►";
+  position:absolute;
+  left:0;
+  top:0;
+  color:#f9d616;
+}
+
+.subpage-content a.link{
+  color:#51d8ff;
+  text-decoration:none;
+  border-bottom:1px dashed #51d8ff;
+  transition:all .15s steps(2);
+}
+.subpage-content a.link:hover{
+  color:#f9d616;
+  border-bottom-color:#f9d616;
+}
+
+.subpage-content .highlight{
+  color:#f9d616;
+  text-shadow:
+    1px 1px 0 #d71920,
+    2px 2px 0 rgba(0,0,0,.5);
+}
+
+/* =========================================================
+   SLIDERS COMPACTOS
+   ========================================================= */
+.option-group{
+  margin-bottom:clamp(10px,1.6vh,16px);
+}
+.option-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:6px;
+  gap:10px;
+}
+.option-value{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(7px,.7vw,9px);
+  color:#f9d616;
+  text-shadow:
+    1px 1px 0 #d71920,
+    1px 1px 0 rgba(0,0,0,.6);
+  min-width:45px;
+  text-align:right;
+}
+
+.subpage-content input[type="range"]{
+  width:100%;
+  margin:0;
+  -webkit-appearance:none;
+  appearance:none;
+  height:12px;
+  background:rgba(3,10,20,.9);
+  border:2px solid #51d8ff;
+  border-radius:0;
+  cursor:pointer;
+  box-shadow:
+    inset 2px 2px 0 rgba(0,0,0,.5),
+    2px 2px 0 rgba(0,0,0,.6);
+}
+.subpage-content input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width:18px;
+  height:18px;
+  background:#f9d616;
+  border:2px solid #d71920;
+  border-radius:0;
+  cursor:pointer;
+  box-shadow:
+    inset -2px -2px 0 rgba(0,0,0,.4),
+    2px 2px 0 rgba(0,0,0,.7),
+    0 0 10px rgba(249,214,22,.6);
+  margin-top:-5px;
+}
+.subpage-content input[type="range"]::-moz-range-thumb{
+  width:18px;
+  height:18px;
+  background:#f9d616;
+  border:2px solid #d71920;
+  border-radius:0;
+  cursor:pointer;
+}
+.subpage-content input[type="range"]::-moz-range-track{
+  height:12px;
+  background:rgba(3,10,20,.9);
+  border:none;
+}
+
+/* =========================================================
+   SELECT COMPACTO
+   ========================================================= */
+.subpage-content select{
+  width:100%;
+  padding:clamp(9px,1.2vh,12px) clamp(12px,1.5vw,16px);
+  background:linear-gradient(180deg,rgba(20,70,105,.4),rgba(5,18,32,.6));
+  color:#c9e2f0;
+  border:2px solid rgba(81,216,255,.5);
+  border-radius:0;
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(7px,.7vw,9px);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  cursor:pointer;
+  box-shadow:
+    inset -2px -2px 0 rgba(0,0,0,.5),
+    inset 2px 2px 0 rgba(255,255,255,.06),
+    3px 3px 0 rgba(0,0,0,.6);
+  transition:all .15s steps(2);
+  -webkit-appearance:none;
+  appearance:none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #51d8ff 50%),
+    linear-gradient(135deg, #51d8ff 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) center,
+    calc(100% - 12px) center;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+.subpage-content select:hover{
+  border-color:#f9d616;
+  color:#fff;
+}
+.subpage-content select option{
+  background:#0a1a2a;
+  color:#c9e2f0;
+  padding:10px;
+}
+
+/* =========================================================
+   BOTÕES DE AÇÃO COMPACTOS
+   ========================================================= */
+.action-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:clamp(12px,1.8vh,18px);
+  padding-top:clamp(10px,1.5vh,14px);
+  border-top:2px solid rgba(81,216,255,.2);
+}
+.btn-action{
+  all:unset;
+  cursor:pointer;
+  flex:1;
+  min-width:120px;
+  padding:clamp(9px,1.2vh,12px) clamp(12px,1.5vw,18px);
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(7px,.75vw,9px);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-align:center;
+  color:#51d8ff;
+  border:2px solid rgba(81,216,255,.5);
+  border-radius:0;
+  background:linear-gradient(180deg,rgba(20,70,105,.4),rgba(5,18,32,.6));
+  box-shadow:
+    inset -2px -2px 0 rgba(0,0,0,.6),
+    inset 2px 2px 0 rgba(255,255,255,.08),
+    3px 3px 0 rgba(0,0,0,.7);
+  transition:all .15s steps(2);
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-shadow:1px 1px 0 rgba(0,0,0,.6);
+}
+.btn-action:hover{
+  color:#fff;
+  border-color:#f9d616;
+  background:linear-gradient(180deg,rgba(249,214,22,.25),rgba(20,70,105,.5));
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,.6),
+    0 0 10px #f9d616;
+}
+.btn-action:active{
+  transform:translate(2px,2px);
+  box-shadow:
+    inset -1px -1px 0 rgba(0,0,0,.5),
+    inset 1px 1px 0 rgba(255,255,255,.06),
+    1px 1px 0 rgba(0,0,0,.6);
+}
+.btn-action.danger{
+  color:#ff9a9a;
+  border-color:rgba(215,25,32,.5);
+  background:linear-gradient(180deg,rgba(215,25,32,.2),rgba(5,18,32,.6));
+}
+.btn-action.danger:hover{
+  color:#fff;
+  border-color:#d71920;
+  background:linear-gradient(180deg,rgba(215,25,32,.5),rgba(5,5,5,.6));
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,.6),
+    0 0 10px #d71920;
+}
+
+/* ---------- MENSAGEM ---------- */
+.save-msg{
+  margin-top:10px;
+  padding:8px 12px;
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(6px,.65vw,8px);
+  letter-spacing:.06em;
+  text-align:center;
+  color:#59f2b0;
+  border:2px solid #59f2b0;
+  background:rgba(89,242,176,.1);
+  text-shadow:1px 1px 0 rgba(0,0,0,.6);
+  opacity:0;
+  transition:opacity .3s steps(4);
+}
+.save-msg.show{ opacity:1; }
+
+/* ---------- RODAPÉ ---------- */
+.subpage-content .sub-footer{
+  margin-top:clamp(10px,1.5vh,14px);
+  padding-top:clamp(8px,1.2vh,12px);
+  border-top:2px solid rgba(81,216,255,.2);
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(5px,.6vw,7px);
+  color:rgba(160,200,225,.55);
+  letter-spacing:.08em;
+  text-align:center;
+}
+
+/* ---------- BOTÃO VOLTAR (global.css já tem, mas reforço) ---------- */
+.subpage-content .back-btn{
+  margin-top:clamp(10px,1.5vh,16px);
+  padding:clamp(10px,1.3vh,13px) clamp(16px,2vw,22px);
+  font-size:clamp(7px,.75vw,9px);
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media(max-width:900px){
+  .subpage-content{
+    width:94vw;
+    max-height:96vh;
+    padding:clamp(16px,2.5vh,22px) clamp(14px,3vw,20px);
+  }
+}
+@media(max-width:700px){
+  .screen{padding:2vh 2vw}
+  .subpage-content{
+    width:96vw;
+    max-height:96vh;
+    padding:16px 14px;
+  }
+  .subpage-content h2{font-size:clamp(.7rem,3.2vw,1rem);margin-bottom:10px}
+  .subpage-content h3{font-size:clamp(.55rem,2.2vw,.7rem)}
+  .subpage-content p,
+  .subpage-content li,
+  .subpage-content label{font-size:7px}
+  .action-row{flex-direction:column;gap:6px}
+  .btn-action{width:100%;min-width:0;min-height:38px}
+  .option-group{margin-bottom:10px}
+}
+@media(max-width:500px){
+  .subpage-content{padding:12px 10px}
+  .subpage-content h2{font-size:clamp(.6rem,3vw,.85rem)}
+  .subpage-content p,
+  .subpage-content li,
+  .subpage-content label{font-size:6px}
+  .btn-action{font-size:7px;padding:10px 8px;min-height:36px}
+  .option-value{font-size:6px}
+  .subpage-content input[type="range"]{height:10px}
+  .subpage-content input[type="range"]::-webkit-slider-thumb{
+    width:16px;height:16px;margin-top:-5px;
+  }
+}
+@media(max-width:380px){
+  .subpage-content{padding:10px 8px}
+  .subpage-content h2{font-size:5px}
+  .subpage-content p,
+  .subpage-content li,
+  .subpage-content label{font-size:5px}
+  .btn-action{font-size:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+@media(hover:none){
+  .btn-action,
+  .back-btn{min-height:44px}
+}

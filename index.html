@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="30x30" href="img/logo-astronavega.png">
+<title>Astronavega — Menu Principal</title>
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+
+<div class="screen" id="screen">
+
+  <div class="nasa-bg" aria-hidden="true"></div>
+
+  <div class="astronaut-layer" aria-hidden="true">
+    <img src="img/capaastronauta.jpg" alt="" draggable="false">
+  </div>
+
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- LOGO -->
+  <div class="brand">
+    <div class="brand-mark"><img src="img/logo-astronavega.png" alt="logoastronavega"></div>
+    <div>
+      <strong>CABEÇA ABERTA</strong>
+      <span>STUDIOS • ANGOLA</span>
+    </div>
+  </div>
+
+  <!-- IDIOMA -->
+  <div class="lang-switch">
+    <button type="button" class="lang-btn" data-lang="pt">PT</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </div>
+
+  <!-- ESTRELAS -->
+  <div id="stars-far"></div>
+  <div id="stars-mid"></div>
+  <div id="stars-near"></div>
+  <div id="stars-shoot"></div>
+
+  <!-- NAVE -->
+  <div class="ship" aria-label="Nave ASTRONAVEGA">
+    <img src="img/nave-espacial.webp" alt="Nave ASTRONAVEGA" draggable="false">
+  </div>
+  <div class="ship-halo" aria-hidden="true"></div>
+
+  <!-- PLANETA -->
+  <div class="planet-scene" aria-hidden="true">
+    <div class="planet-ring"></div>
+    <div class="planet"></div>
+    <div class="planet-light"></div>
+    <div class="planet-text"
+         data-pt="Explore o mundo e aprenda jogando"
+         data-en="Explore the world and learn by playing">Explore o mundo e aprenda jogando</div>
+  </div>
+
+  <!-- TÍTULO PIXEL 3D -->
+  <header class="titlewrap">
+    <h1 class="game-title">ASTRONAVEGA</h1>
+    <p class="subtitle">SPACE EXPLORATION • AN ANGOLAN PRODUCTION</p>
+  </header>
+
+  <!-- PAINEL DE MENU -->
+  <section class="panel" aria-label="Menu principal">
+    <div class="panel-header">
+      <b data-pt="CONTROLO DA MISSÃO" data-en="MISSION CONTROL">CONTROLO DA MISSÃO</b>
+      <span class="status">ONLINE</span>
+    </div>
+
+    <nav class="menu">
+      <button type="button" class="primary" id="btn-start"
+              data-pt="JOGAR" data-en="PLAY">JOGAR</button>
+
+      <a href="opcoes.html"
+         data-pt="OPÇÕES" data-en="OPTIONS">OPÇÕES</a>
+
+      <a href="galeria.html"
+        data-pt="GALERIA" data-en="GALLERY">GALERIA</a>   
+
+      <a href="info.html"
+         data-pt="INFORMAÇÕES" data-en="INFORMATION">INFORMAÇÕES</a>
+
+      <button type="button" class="quit" id="btn-quit"
+              data-pt="SAIR" data-en="QUIT">SAIR</button>
+    </nav>
+
+    <div class="panel-signature">ANGOLA • LUANDA • 2026</div>
+  </section>
+
+  <!-- HUD -->
+  <div class="hud-right" aria-hidden="true">SETOR 12<br>NAVE HORIZON-7</div>
+
+  <div class="game-info">
+    <div>MISSION <strong>ASTRO-01</strong></div>
+    <div>SECTOR <strong>ORION-07</strong></div>
+    <div>VESSEL <strong>AV-07</strong></div>
+    <div>STATUS <strong>EXPLORATION</strong></div>
+  </div>
+  <div class="hud-bottom">SYSTEM 01 // NAVIGATION ONLINE // DISTANCE 04.82 AU</div>
+  <div class="footer-info">VERSÃO 1.0.1 &nbsp;|&nbsp; © 2026 ASTRONAVEGA • CABEÇA ABERTA STUDIOS • ANGOLA</div>
+
+  <!-- MÚSICA -->
+  <div class="audio-controls">
+    <button type="button" class="audio-toggle" id="audio-toggle" aria-pressed="false" aria-label="Ativar música">
+      <div class="bars"><span></span><span></span><span></span></div>
+    </button> 
+  </div>
+
+</div>
+
+<script src="js/idioma.js"></script>
+<script src="js/estrelas.js"></script>
+<script src="js/musica.js"></script>
+<script src="js/menu.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', ()=>{
+    initEstrelas();
+    initMusica();
+    initMenu();
+  });
+</script>
+
+</body>
+</html>

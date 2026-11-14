@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="30x30" href="img/icon.png">
+<title>Astronavega — Informações</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/paginas.css">
+<style>
+  /* Tabs dentro da página de informações */
+  .tabs{
+    display:flex;
+    gap:6px;
+    margin-bottom:clamp(12px,1.8vh,18px);
+    flex-wrap:wrap;
+    padding-bottom:0;
+  }
+  .tab-btn{
+    all:unset;
+    cursor:pointer;
+    padding:clamp(8px,1.1vh,11px) clamp(10px,1.3vw,14px);
+    font-family:"Press Start 2P",monospace;
+    font-size:clamp(6px,.65vw,8px);
+    letter-spacing:.06em;
+    color:#c9e2f0;
+    text-transform:uppercase;
+    border:2px solid rgba(81,216,255,.35);
+    border-radius:0;
+    background:linear-gradient(180deg,rgba(20,70,105,.35),rgba(5,18,32,.5));
+    box-shadow:
+      inset -2px -2px 0 rgba(0,0,0,.5),
+      inset 2px 2px 0 rgba(255,255,255,.06),
+      3px 3px 0 rgba(0,0,0,.6);
+    transition:all .15s steps(2);
+    min-height:34px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .tab-btn:hover{
+    color:#fff;
+    border-color:#51d8ff;
+  }
+  .tab-btn.active{
+    color:#f9d616;
+    border-color:#f9d616;
+    background:linear-gradient(180deg,rgba(215,25,32,.25),rgba(5,5,5,.6));
+    text-shadow:
+      1px 1px 0 #d71920,
+      2px 2px 0 #050505;
+    box-shadow:
+      inset -2px -2px 0 rgba(0,0,0,.7),
+      inset 2px 2px 0 rgba(255,255,255,.1),
+      3px 3px 0 rgba(0,0,0,.7),
+      0 0 14px rgba(249,214,22,.3);
+  }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
+
+  /* Compactar ainda mais o texto das tabs */
+  .tab-panel h3{
+    margin:clamp(8px,1.4vh,14px) 0 clamp(6px,1vh,10px);
+  }
+  .tab-panel p,
+  .tab-panel li{
+    margin-bottom:clamp(3px,.6vh,6px);
+    line-height:1.6;
+  }
+  .tab-panel ul{
+    margin-bottom:clamp(6px,1vh,10px);
+  }
+</style>
+</head>
+<body>
+
+<div class="screen">
+  <div class="nasa-bg" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="lang-switch">
+    <button type="button" class="lang-btn" data-lang="pt">PT</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </div>
+
+  <div class="subpage-content">
+    <h2 data-pt="INFORMAÇÕES" data-en="INFORMATION">INFORMAÇÕES</h2>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="sobre"
+              data-pt="SOBRE / API NASA" data-en="ABOUT / NASA API">SOBRE / API NASA</button>
+      <button class="tab-btn" data-tab="instrucoes"
+              data-pt="INSTRUÇÕES" data-en="INSTRUCTIONS">INSTRUÇÕES</button>
+      <button class="tab-btn" data-tab="creditos"
+              data-pt="CRÉDITOS" data-en="CREDITS">CRÉDITOS</button>
+    </div>
+
+    <!-- PAINEL: SOBRE -->
+    <div class="tab-panel active" id="tab-sobre">
+      <p data-pt="O ASTRONAVEGA utiliza imagens e dados de domínio público da NASA para criar uma experiência espacial educativa e imersiva."
+         data-en="ASTRONAVEGA uses public domain images and data from NASA to create an educational and immersive space experience.">
+         O ASTRONAVEGA utiliza imagens e dados de domínio público da NASA para criar uma experiência espacial educativa e imersiva.
+      </p>
+
+      <h3 data-pt="SOBRE A API DA NASA" data-en="ABOUT THE NASA API">SOBRE A API DA NASA</h3>
+      <p data-pt="A NASA disponibiliza várias APIs públicas e gratuitas para desenvolvedores:"
+         data-en="NASA provides several public and free APIs for developers:">
+         A NASA disponibiliza várias APIs públicas e gratuitas para desenvolvedores:
+      </p>
+      <ul>
+        <li><span class="highlight">APOD</span> — Astronomy Picture of the Day</li>
+        <li><span class="highlight">Mars Rover Photos</span> — Fotos dos rovers em Marte</li>
+        <li><span class="highlight">EPIC</span> — Earth Polychromatic Imaging Camera</li>
+        <li><span class="highlight">NeoWs</span> — Near Earth Object Web Service</li>
+        <li><span class="highlight">NASA Image and Video Library</span></li>
+      </ul>
+
+      <h3 data-pt="COMO OBTER UMA CHAVE API" data-en="HOW TO GET AN API KEY">COMO OBTER UMA CHAVE API</h3>
+      <p data-pt="Podes registar-te gratuitamente em:" data-en="You can register for free at:">
+         Podes registar-te gratuitamente em:
+      </p>
+      <p><a class="link" href="https://api.nasa.gov/" target="_blank" rel="noopener">https://api.nasa.gov/</a></p>
+
+      <h3 data-pt="CRÉDITOS À NASA" data-en="NASA CREDITS">CRÉDITOS À NASA</h3>
+      <p data-pt="Todas as imagens, dados e recursos utilizados neste projeto são cortesia da NASA e do seu programa de acesso aberto."
+         data-en="All images, data and resources used in this project are courtesy of NASA and its open access program.">
+         Todas as imagens, dados e recursos utilizados neste projeto são cortesia da NASA e do seu programa de acesso aberto.
+      </p>
+      <p>
+        <a class="link" href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA.gov</a> &nbsp;|&nbsp;
+        <a class="link" href="https://images.nasa.gov/" target="_blank" rel="noopener">NASA Image Library</a> &nbsp;|&nbsp;
+        <a class="link" href="https://api.nasa.gov/" target="_blank" rel="noopener">api.nasa.gov</a>
+      </p>
+    </div>
+
+    <!-- PAINEL: INSTRUÇÕES -->
+    <div class="tab-panel" id="tab-instrucoes">
+      <p data-pt="Como jogar ASTRONAVEGA:" data-en="How to play ASTRONAVEGA:">Como jogar ASTRONAVEGA:</p>
+      <ul>
+        <li data-pt="Use as setas do teclado ou WASD para mover a nave."
+            data-en="Use the arrow keys or WASD to move the ship.">
+            Use as setas do teclado ou WASD para mover a nave.
+        </li>
+        <li data-pt="Pressiona Espaço para disparar."
+            data-en="Press Space to shoot.">
+            Pressiona Espaço para disparar.
+        </li>
+        <li data-pt="Pressiona Shift para acelerar."
+            data-en="Press Shift to boost.">
+            Pressiona Shift para acelerar.
+        </li>
+        <li data-pt="Pressiona ESC para pausar o jogo."
+            data-en="Press ESC to pause the game.">
+            Pressiona ESC para pausar o jogo.
+        </li>
+        <li data-pt="Explora o mundo e aprende jogando!"
+            data-en="Explore the world and learn by playing!">
+            Explora o mundo e aprende jogando!
+        </li>
+      </ul>
+    </div>
+
+    <!-- PAINEL: CRÉDITOS -->
+    <div class="tab-panel" id="tab-creditos">
+      <p><strong data-pt="DESENVOLVIMENTO:" data-en="DEVELOPMENT:">DESENVOLVIMENTO:</strong> Cabeça Aberta Studios</p>
+      <p><strong data-pt="DESIGN GRÁFICO:" data-en="GRAPHIC DESIGN:">DESIGN GRÁFICO:</strong> Equipa Cabeça Aberta</p>
+      <p><strong data-pt="PROGRAMAÇÃO:" data-en="PROGRAMMING:">PROGRAMAÇÃO:</strong> Equipa Cabeça Aberta</p>
+      <p><strong data-pt="MÚSICA E SOM:" data-en="MUSIC &amp; SOUND:">MÚSICA E SOM:</strong> Cabeça Aberta Studios</p>
+      <p><strong data-pt="PRODUÇÃO:" data-en="PRODUCTION:">PRODUÇÃO:</strong> Angola</p>
+
+      <h3 data-pt="RECURSOS EXTERNOS" data-en="EXTERNAL RESOURCES">RECURSOS EXTERNOS</h3>
+      <p data-pt="Imagens espaciais cortesia da NASA (domínio público)."
+         data-en="Space images courtesy of NASA (public domain).">
+        Imagens espaciais cortesia da NASA (domínio público).
+      </p>
+      <p>
+        <a class="link" href="https://www.nasa.gov/" target="_blank" rel="noopener">NASA</a> &nbsp;|&nbsp;
+        <a class="link" href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA API</a>
+      </p>
+    </div>
+
+    <div class="sub-footer">© 2026 ASTRONAVEGA • CABEÇA ABERTA STUDIOS • ANGOLA</div>
+
+    <a href="index.html" class="back-btn"
+       data-pt="← VOLTAR AO MENU" data-en="← BACK TO MENU">← VOLTAR AO MENU</a>
+  </div>
+</div>
+
+<script src="js/idioma.js"></script>
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

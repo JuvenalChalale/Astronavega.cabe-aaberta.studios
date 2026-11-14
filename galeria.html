@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="30x30" href="img/icon.png">
+<title>Astronavega — Galeria de Capturas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/galeria.css">
+</head>
+<body>
+
+<div class="screen">
+  <div class="nasa-bg" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="lang-switch">
+    <button type="button" class="lang-btn" data-lang="pt">PT</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </div>
+
+  <div class="subpage-content">
+    <h2 data-pt="GALERIA DE CAPTURAS" data-en="CAPTURE GALLERY">GALERIA DE CAPTURAS</h2>
+
+    <!-- FILTROS -->
+    <div class="gallery-toolbar">
+      <button class="filter-btn active" data-filter="todas"
+              data-pt="TODAS" data-en="ALL">TODAS</button>
+      <button class="filter-btn" data-filter="missao"
+              data-pt="MISSÕES" data-en="MISSIONS">MISSÕES</button>
+      <button class="filter-btn" data-filter="planeta"
+              data-pt="PLANETAS" data-en="PLANETS">PLANETAS</button>
+      <button class="filter-btn" data-filter="nave"
+              data-pt="NAVES" data-en="SHIPS">NAVES</button>
+      <button class="filter-btn" data-filter="evento"
+              data-pt="EVENTOS" data-en="EVENTS">EVENTOS</button>
+      <span class="gallery-count" id="gallery-count"></span>
+    </div>
+
+    <!-- GRELHA -->
+    <div class="gallery-grid" id="gallery-grid"></div>
+
+    <!-- ESTADO VAZIO -->
+    <div class="gallery-empty" id="gallery-empty" style="display:none;">
+      <span class="icon">📷</span>
+      <p data-pt="Ainda não há capturas nesta categoria."
+         data-en="There are no captures in this category yet.">
+         Ainda não há capturas nesta categoria.
+      </p>
+      <p data-pt="Joga e tira screenshots para preencher a tua galeria!"
+         data-en="Play and take screenshots to fill your gallery!">
+         Joga e tira screenshots para preencher a tua galeria!
+      </p>
+    </div>
+
+    <div class="sub-footer">© 2026 ASTRONAVEGA • CABEÇA ABERTA STUDIOS • ANGOLA</div>
+
+    <a href="index.html" class="back-btn"
+       data-pt="← VOLTAR AO MENU" data-en="← BACK TO MENU">← VOLTAR AO MENU</a>
+  </div>
+
+  <!-- MODAL -->
+  <div class="gallery-modal" id="gallery-modal">
+    <div class="modal-inner">
+      <button class="modal-close" id="modal-close" aria-label="Fechar">✕</button>
+      <img class="modal-image" id="modal-image" src="" alt="">
+      <div class="modal-info">
+        <span class="modal-title" id="modal-title"></span>
+        <div class="modal-meta" id="modal-meta"></div>
+        <div class="modal-desc" id="modal-desc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/idioma.js"></script>
+<script src="js/galeria.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", initGaleria);
+</script>
+</body>
+</html>

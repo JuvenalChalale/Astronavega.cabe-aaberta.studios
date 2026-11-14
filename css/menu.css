@@ -1,0 +1,426 @@
+/* =========================================================
+   MENU.CSS — Estilo Pixel Art 3D (retro-espacial)
+   ========================================================= */
+
+/* ---------- ASTRONAUTA ---------- */
+.astronaut-layer{
+  position:absolute;z-index:2;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:55vw;height:90vh;pointer-events:none;overflow:hidden;opacity:.85;
+  mix-blend-mode:screen;
+  animation:astronautFloat 18s ease-in-out infinite alternate;
+  -webkit-mask-image:radial-gradient(ellipse 68% 78% at 52% 48%,#000 0%,rgba(0,0,0,.95) 20%,rgba(0,0,0,.65) 45%,rgba(0,0,0,.15) 70%,transparent 100%);
+  mask-image:radial-gradient(ellipse 68% 78% at 52% 48%,#000 0%,rgba(0,0,0,.95) 20%,rgba(0,0,0,.65) 45%,rgba(0,0,0,.15) 70%,transparent 100%);
+}
+.astronaut-layer img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 35%;
+  display:block;filter:grayscale(.05) saturate(.85) contrast(1) brightness(.95);
+  transform:scale(1.02);
+}
+.astronaut-layer::before{
+  content:"";position:absolute;inset:0;z-index:2;
+  background:
+    radial-gradient(ellipse at 50% 42%,transparent 15%,rgba(2,5,11,.08) 40%,rgba(2,5,11,.3) 72%,rgba(2,5,11,.6) 100%),
+    linear-gradient(90deg,rgba(2,5,11,.7) 0%,rgba(2,5,11,.35) 18%,transparent 50%,rgba(2,5,11,.15) 75%,rgba(2,5,11,.6) 100%);
+}
+@keyframes astronautFloat{
+  0%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(calc(-50% - 5px),calc(-50% - 4px)) scale(1.015)}
+  100%{transform:translate(calc(-50% + 5px),calc(-50% + 4px)) scale(1.01)}
+}
+
+/* ---------- ESTRELAS ---------- */
+#stars-far,#stars-mid,#stars-near,#stars-shoot{position:absolute;inset:0;z-index:1;pointer-events:none}
+.star{position:absolute;background:#fff;border-radius:0;box-shadow:0 0 6px rgba(180,230,255,.65);opacity:.75}
+.star.twinkle{animation:twinkle 3s steps(4) infinite}
+@keyframes twinkle{0%,100%{opacity:.15}50%{opacity:1}}
+.shooting-star{position:absolute;width:3px;height:3px;background:#fff;border-radius:0;opacity:0;box-shadow:0 0 10px 2px #fff}
+.shooting-star::before{content:"";position:absolute;right:0;top:50%;width:120px;height:2px;background:linear-gradient(90deg,#fff,transparent);transform:translateY(-50%) rotate(var(--angle,0deg))}
+.shooting-star.fire{animation:shoot 1.3s steps(12) forwards}
+@keyframes shoot{0%{opacity:0}8%{opacity:1}88%{opacity:.85}100%{opacity:0;transform:translate(var(--dx),var(--dy))}}
+
+/* =========================================================
+   TÍTULO — PIXEL ART 3D
+   ========================================================= */
+.titlewrap{
+  position:absolute;
+  z-index:12;
+  top:11%;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(960px,96vw);
+  text-align:center;
+  pointer-events:none;
+}
+.game-title{
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(1.6rem,4.5vw,3.4rem);
+  letter-spacing:.12em;
+  line-height:1.15;
+  white-space:nowrap;
+  text-transform:uppercase;
+  color:#f9d616; /* amarelo Angola */
+  position:relative;
+  /* EFEITO 3D PIXELADO — camadas de sombra */
+  text-shadow:
+    3px 3px 0 #d71920,       /* vermelho Angola */
+    6px 6px 0 #050505,       /* preto */
+    9px 9px 0 rgba(0,0,0,.5),
+    0 0 20px rgba(81,216,255,.6),
+    0 0 40px rgba(81,216,255,.3);
+  animation:titleFloat 4s steps(20) infinite;
+}
+.subtitle{
+  margin-top:24px;
+  color:#51d8ff;
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(.42rem,.65vw,.55rem);
+  letter-spacing:.35em;
+  text-transform:uppercase;
+  text-shadow:
+    1px 1px 0 #050505,
+    2px 2px 0 rgba(0,0,0,.4),
+    0 0 12px rgba(81,216,255,.5);
+  opacity:.9;
+}
+@keyframes titleFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+
+/* =========================================================
+   PAINEL DE MENU — BOTÕES PIXEL ART
+   ========================================================= */
+.panel{
+  position:absolute;
+  z-index:12;
+  left:6%;
+  top:50%;
+  transform:translateY(-50%);
+  width:min(330px,32vw);
+  padding:0;
+  background:rgba(3,10,20,.82);
+  /* Borda pixelada: usa outline + box-shadow em vez de border-radius */
+  border:2px solid #51d8ff;
+  border-radius:0;
+  backdrop-filter:blur(10px);
+  box-shadow:
+    6px 6px 0 rgba(0,0,0,.7),
+    0 0 30px rgba(81,216,255,.15),
+    inset 0 0 0 1px rgba(81,216,255,.1);
+}
+/* Cantos pixelados decorativos */
+.panel::before, .panel::after{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:#f9d616;
+}
+.panel::before{ top:-2px; left:-2px; }
+.panel::after{ bottom:-2px; right:-2px; }
+
+.panel-header{
+  padding:14px 20px;
+  border-bottom:2px solid rgba(81,216,255,.3);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(81,216,255,.05);
+}
+.panel-header b{
+  font-family:"Press Start 2P",monospace;
+  font-size:8px;
+  letter-spacing:.15em;
+  color:#9eeaff;
+  text-transform:uppercase;
+}
+.status{
+  font-family:"Press Start 2P",monospace;
+  font-size:8px;
+  color:#59f2b0;
+  letter-spacing:.1em;
+}
+.status::before{ content:"●"; margin-right:6px; }
+
+.menu{
+  display:flex;
+  flex-direction:column;
+  padding:12px;
+  gap:6px;
+}
+.menu button, .menu a{
+  all:unset;
+  cursor:pointer;
+  display:block;
+  padding:14px 18px;
+  color:#c9e2f0;
+  font-family:"Press Start 2P",monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-decoration:none;
+  text-align:center;
+  /* Borda pixelada */
+  border:2px solid rgba(81,216,255,.35);
+  border-radius:0;
+  background:linear-gradient(180deg,rgba(20,70,105,.35),rgba(5,18,32,.5));
+  /* Sombra 3D tipo bloco pixel */
+  box-shadow:
+    inset -2px -2px 0 rgba(0,0,0,.5),
+    inset 2px 2px 0 rgba(255,255,255,.06),
+    3px 3px 0 rgba(0,0,0,.6);
+  position:relative;
+  transition:all .08s steps(2);
+}
+/* Efeito de "pressionar" ao clicar */
+.menu button:active, .menu a:active{
+  transform:translate(2px,2px);
+  box-shadow:
+    inset -1px -1px 0 rgba(0,0,0,.5),
+    inset 1px 1px 0 rgba(255,255,255,.06),
+    1px 1px 0 rgba(0,0,0,.6);
+}
+
+/* Hover — botão acende em ciano */
+.menu button:hover, .menu button:focus-visible,
+.menu a:hover, .menu a:focus-visible{
+  color:#fff;
+  border-color:#51d8ff;
+  background:linear-gradient(180deg,rgba(81,216,255,.25),rgba(20,70,105,.5));
+  text-shadow:0 0 8px #51d8ff;
+}
+
+/* Botão JOGAR — destaque amarelo/vermelho Angola */
+.menu button.primary{
+  color:#f9d616;
+  border-color:#f9d616;
+  background:linear-gradient(180deg,rgba(215,25,32,.25),rgba(5,5,5,.6));
+  font-size:11px;
+  padding:18px;
+  text-shadow:
+    1px 1px 0 #d71920,
+    2px 2px 0 #050505,
+    0 0 12px rgba(249,214,22,.6);
+  box-shadow:
+    inset -2px -2px 0 rgba(0,0,0,.7),
+    inset 2px 2px 0 rgba(255,255,255,.1),
+    3px 3px 0 rgba(0,0,0,.7),
+    0 0 20px rgba(249,214,22,.3);
+}
+.menu button.primary:hover{
+  color:#fff;
+  background:linear-gradient(180deg,rgba(249,214,22,.4),rgba(215,25,32,.4));
+  text-shadow:
+    1px 1px 0 #d71920,
+    2px 2px 0 #050505,
+    0 0 16px #f9d616;
+}
+
+/* Botão SAIR — vermelho subtil */
+.menu button.quit{
+  margin-top:6px;
+  color:#ff9a9a;
+  border-color:rgba(215,25,32,.5);
+  background:linear-gradient(180deg,rgba(215,25,32,.15),rgba(5,18,32,.5));
+}
+.menu button.quit:hover{
+  color:#fff;
+  border-color:#d71920;
+  background:linear-gradient(180deg,rgba(215,25,32,.4),rgba(5,5,5,.6));
+  text-shadow:0 0 10px #d71920;
+}
+
+.panel-signature{
+  padding:12px 20px;
+  border-top:2px solid rgba(81,216,255,.2);
+  font-family:"Press Start 2P",monospace;
+  font-size:7px;
+  letter-spacing:.15em;
+  color:rgba(249,214,22,.7);
+  text-align:center;
+  text-transform:uppercase;
+  background:rgba(81,216,255,.03);
+  text-shadow:1px 1px 0 rgba(0,0,0,.8);
+}
+
+/* ---------- INFO / HUD ---------- */
+.game-info{
+  position:absolute;
+  z-index:12;
+  right:4%;
+  bottom:8%;
+  width:240px;
+  font-family:"Press Start 2P",monospace;
+  font-size:7px;
+  color:#7d9bb0;
+  line-height:2.2;
+  letter-spacing:.05em;
+  padding:14px 18px;
+  border-left:2px solid rgba(81,216,255,.4);
+  background:linear-gradient(90deg,rgba(3,15,27,.5),transparent);
+  opacity:.85;
+}
+.game-info strong{ color:#51d8ff; font-weight:400; }
+.hud-right{
+  position:absolute;
+  z-index:12;
+  right:4%;
+  top:29%;
+  font-family:"Press Start 2P",monospace;
+  font-size:7px;
+  line-height:2.4;
+  color:rgba(160,210,235,.55);
+  text-align:right;
+  letter-spacing:.05em;
+}
+.hud-bottom{
+  position:absolute;
+  z-index:12;
+  left:5%;
+  bottom:4%;
+  font-family:"Press Start 2P",monospace;
+  font-size:7px;
+  color:rgba(150,205,230,.45);
+  letter-spacing:.08em;
+}
+
+/* ---------- NAVE ---------- */
+.ship{
+  position:absolute;
+  z-index:10;
+  left:61%;
+  top:54%;
+  width:min(25vw,370px);
+  transform:translate(-50%,-50%) rotate(-7deg);
+  filter:drop-shadow(0 15px 15px rgba(0,0,0,.82)) drop-shadow(0 0 22px rgba(68,210,255,.32));
+  animation:shipFloat 5s steps(20) infinite;
+  pointer-events:none;
+}
+.ship img{
+  display:block;width:100%;height:auto;object-fit:contain;
+  filter:brightness(.72) saturate(.95) contrast(1.12);
+  /* Efeito pixelado na nave */
+  image-rendering:pixelated;
+}
+@keyframes shipFloat{
+  0%,100%{transform:translate(-50%,-50%) rotate(-7deg) translateY(0)}
+  50%{transform:translate(-50%,-50%) rotate(-5deg) translateY(-13px)}
+}
+.ship-halo{
+  position:absolute;
+  z-index:9;
+  left:62%;
+  top:56%;
+  width:min(32vw,470px);
+  aspect-ratio:1;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(61,196,255,.15),transparent 62%);
+  filter:blur(8px);
+  animation:halo 5s steps(20) infinite;
+}
+@keyframes halo{50%{opacity:.65;transform:translate(-50%,-50%) scale(1.08)}}
+
+/* ---------- PLANETA ---------- */
+.planet-scene{
+  position:absolute;
+  z-index:8;
+  left:71%;
+  top:59%;
+  width:min(30vw,430px);
+  aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.planet{
+  position:absolute;inset:9%;border-radius:50%;
+  background:radial-gradient(circle at 33% 28%,#dff7ff 0 4%,#4d9bd2 17%,#245a9a 39%,#102d57 66%,#030b18 100%);
+  box-shadow:
+    inset -35px -25px 55px rgba(0,0,0,.8),
+    inset 12px 5px 28px rgba(190,235,255,.25),
+    0 0 35px rgba(63,190,255,.35);
+}
+.planet::before{
+  content:"";position:absolute;inset:0;border-radius:50%;
+  background:repeating-linear-gradient(165deg,transparent 0 19px,rgba(255,255,255,.055) 20px 24px,transparent 25px 42px);
+  mix-blend-mode:screen;opacity:.7;
+}
+.planet::after{
+  content:"";position:absolute;inset:-6%;border-radius:50%;
+  border:1px solid rgba(126,224,255,.28);
+  box-shadow:0 0 30px rgba(70,198,255,.16);
+}
+.planet-ring{
+  position:absolute;left:-5%;right:-5%;top:38%;height:23%;
+  border:8px solid rgba(100,196,240,.3);
+  border-left-color:rgba(170,235,255,.55);
+  border-right-color:rgba(60,130,210,.25);
+  border-radius:50%;transform:rotate(-14deg);
+  filter:drop-shadow(0 0 7px rgba(81,216,255,.28));
+}
+.planet-light{
+  position:absolute;right:2%;top:28%;width:9px;height:9px;border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 15px 5px #fff,0 0 55px 18px rgba(255,215,130,.45);
+}
+.planet-text{
+  position:absolute;
+  top:50%;left:55%;
+  transform:translate(-50%,-50%);
+  width:70%;
+  text-align:center;
+  font-family:"Press Start 2P",monospace;
+  font-size:clamp(.38rem,.7vw,.55rem);
+  font-weight:400;
+  letter-spacing:.08em;
+  line-height:1.6;
+  color:#fff;
+  text-shadow:
+    1px 1px 0 #050505,
+    2px 2px 0 rgba(0,0,0,.5),
+    0 0 12px rgba(81,216,255,.9);
+  text-transform:uppercase;
+  z-index:10;
+  pointer-events:none;
+  opacity:0;
+  animation:typewriterSequence 8s steps(30) infinite;
+}
+@keyframes typewriterSequence{
+  0%{opacity:0;clip-path:inset(0 100% 0 0)}
+  10%{opacity:1;clip-path:inset(0 85% 0 0)}
+  25%{opacity:1;clip-path:inset(0 60% 0 0)}
+  40%{opacity:1;clip-path:inset(0 35% 0 0)}
+  55%{opacity:1;clip-path:inset(0 0 0 0)}
+  75%{opacity:1;clip-path:inset(0 0 0 0)}
+  90%{opacity:0;clip-path:inset(0 0 0 0)}
+  100%{opacity:0;clip-path:inset(0 100% 0 0)}
+}
+
+/* ---------- RESPONSIVO ---------- */
+@media(max-width:900px){
+  .panel{width:min(330px,85vw);left:6%;top:50%}
+  .ship{left:69%;top:69%;width:43vw;opacity:.88}
+  .ship-halo{left:69%;top:69%;width:50vw}
+  .planet-scene{left:79%;top:72%;width:43vw}
+  .game-info,.hud-right,.hud-bottom{display:none}
+  .titlewrap{top:7%;width:96vw}
+  .game-title{font-size:clamp(1.1rem,3.8vw,2rem);letter-spacing:.1em}
+  .subtitle{letter-spacing:.25em;font-size:clamp(.35rem,.55vw,.45rem)}
+}
+@media(max-width:600px){
+  .titlewrap{top:9%;width:96vw}
+  .game-title{font-size:clamp(.9rem,4.2vw,1.6rem);letter-spacing:.08em}
+  .subtitle{font-size:6px;letter-spacing:.2em;margin-top:10px}
+  .panel{top:50%;left:5%;width:90%;padding:0}
+  .panel-header{padding:12px 14px}
+  .panel-header b{font-size:6px}
+  .status{font-size:6px}
+  .menu{padding:8px;gap:5px}
+  .menu button,.menu a{padding:12px 14px;font-size:7px;letter-spacing:.08em}
+  .menu button.primary{padding:15px 14px;font-size:9px}
+  .ship{left:72%;top:82%;width:48vw;opacity:.7}
+  .ship-halo{left:72%;top:82%;width:57vw}
+  .planet-scene{left:79%;top:82%;width:48vw;opacity:.7}
+  .panel-signature{font-size:6px;padding:10px 14px}
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" sizes="30x30" href="img/icon.png">
+<title>Astronavega — Opções</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/paginas.css">
+</head>
+<body>
+
+<div class="screen">
+  <div class="nasa-bg" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <div class="lang-switch">
+    <button type="button" class="lang-btn" data-lang="pt">PT</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+  </div>
+
+  <div class="subpage-content">
+    <h2 data-pt="OPÇÕES" data-en="OPTIONS">OPÇÕES</h2>
+
+    <!-- VOLUME GERAL -->
+    <div class="option-group">
+      <div class="option-row">
+        <label for="volume-master"
+               data-pt="VOLUME GERAL" data-en="MASTER VOLUME">VOLUME GERAL</label>
+        <span class="option-value" id="val-volume-master">80%</span>
+      </div>
+      <input type="range" id="volume-master" min="0" max="100" value="80">
+    </div>
+
+    <!-- MÚSICA -->
+    <div class="option-group">
+      <div class="option-row">
+        <label for="volume-music"
+               data-pt="MÚSICA" data-en="MUSIC">MÚSICA</label>
+        <span class="option-value" id="val-volume-music">70%</span>
+      </div>
+      <input type="range" id="volume-music" min="0" max="100" value="70">
+    </div>
+
+    <!-- EFEITOS SONOROS -->
+    <div class="option-group">
+      <div class="option-row">
+        <label for="volume-effects"
+               data-pt="EFEITOS SONOROS" data-en="SOUND EFFECTS">EFEITOS SONOROS</label>
+        <span class="option-value" id="val-volume-effects">90%</span>
+      </div>
+      <input type="range" id="volume-effects" min="0" max="100" value="90">
+    </div>
+
+    <!-- QUALIDADE GRÁFICA -->
+    <div class="option-group">
+      <div class="option-row">
+        <label for="quality"
+               data-pt="QUALIDADE GRÁFICA" data-en="GRAPHICS QUALITY">QUALIDADE GRÁFICA</label>
+      </div>
+      <select id="quality">
+        <option value="low" data-pt="BAIXA" data-en="LOW">BAIXA</option>
+        <option value="medium" selected data-pt="MÉDIA" data-en="MEDIUM">MÉDIA</option>
+        <option value="high" data-pt="ALTA" data-en="HIGH">ALTA</option>
+        <option value="ultra" data-pt="ULTRA" data-en="ULTRA">ULTRA</option>
+      </select>
+    </div>
+
+    <!-- BOTÕES -->
+    <div class="action-row">
+      <button type="button" class="btn-action" id="btn-save"
+              data-pt="GUARDAR" data-en="SAVE">GUARDAR</button>
+      <button type="button" class="btn-action danger" id="btn-reset"
+              data-pt="RESTAURAR" data-en="RESET">RESTAURAR</button>
+    </div>
+
+    <!-- MENSAGEM -->
+    <div class="save-msg" id="save-msg"></div>
+
+    <div class="sub-footer">© 2026 ASTRONAVEGA • CABEÇA ABERTA STUDIOS • ANGOLA</div>
+
+    <a href="index.html" class="back-btn"
+       data-pt="← VOLTAR AO MENU" data-en="← BACK TO MENU">← VOLTAR AO MENU</a>
+  </div>
+</div>
+
+<script src="js/idioma.js"></script>
+<script src="js/opcoes.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", initOpcoes);
+</script>
+</body>
+</html>
